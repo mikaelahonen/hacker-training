@@ -5,6 +5,41 @@ This repository is for hacking training.
 ## Training Linux
 [This](http://overthewire.org/wargames/bandit/) site is good for training basic Linux commands.
 
+### Linux commands
+
+**base64**
+Base64 encode and decode data.
+
+**find**
+Find files based on name, size or user.
+
+**grep**
+Match regular expression patterns for lines in a file or files.
+
+**sort**
+Sort lines in a file.
+
+**strings**
+Get string representations from a binary file.
+
+**tr**
+Text rotate for weak encryption.
+
+**uniq**
+Get unique lines.
+
+
+### Additional Linux functionalities
+
+**Exit ssh connection**
+Press `CTRL` + `D`.
+
+**Chaining the commands**
+Use vertical bar `|` to chaing multiple commands together. For example this sorts `data.txt` file, counts number of duplicate lines and reverse sorts according to the count:
+
+`sort data.txt | uniq -c | sort -r`
+
+## Hack the box challenges
 Here you find the [hackthebox.eu](https://www.hackthebox.eu/) a site for hacking exercises. The first challenge is to hack yourself an invitation code to sign up.
 
 ## Setting up virtual machine for hacking
