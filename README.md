@@ -3,7 +3,7 @@
 This repository is for hacking training.
 
 ## Training Linux
-[This](http://overthewire.org/wargames/bandit/) site is good for training basic Linux commands.
+[Badndit excercises](http://overthewire.org/wargames/bandit/) by Over the wire is good for training basic Linux commands.
 
 ### Linux commands
 
@@ -42,6 +42,8 @@ Use vertical bar `|` to chaing multiple commands together. For example this sort
 ## Hack the box challenges
 Here you find the [hackthebox.eu](https://www.hackthebox.eu/) a site for hacking exercises. The first challenge is to hack yourself an invitation code to sign up.
 
+Next you need to connect by `openvpn`.
+
 ## Setting up virtual machine for hacking
 The machines in hacking challenges are open for all users.
 This makes your own computer vulnerable to attacks, at least in theory.
@@ -71,6 +73,7 @@ Add a user group called `hacker`:
 Create the users, add to the `hacker` group and set as the primary group:
 
 `sudo adduser <username>`
+
 `sudo usermod -g hacker <username>`
 
 To add multiple users to the `hacker` group:
@@ -115,11 +118,12 @@ Show all users:
 `less /etc/passwd `
 
 Exit `less`:
+
 `:q`
 
 ### Logging in to the hacking server
 
-#### Windows users
+**Windows users**
 [Install PuTTY](https://www.putty.org/).
 
 IP address is something like `xx.xx.xxx.xxx`. Port should be `22`. Click `open`.
@@ -128,7 +132,27 @@ Use the given username and password.
 
 If you have installed [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) you don't need `PuTTY`. Just follow the `MaC users` instructions.
 
-#### MaC users
+**Mac users**
 [Open terminal](https://macpaw.com/how-to/use-terminal-on-mac).
 
 Run the command `ssh username@xx.xx.xxx.xxx -p 22`. Type the password.
+
+### Openvpn
+Hackthebox.eu reqires openvpn to connect to their server. Install openvpn to the server as admin.
+
+See what is the executable for `openvpn`:
+
+`which openvpn`
+
+
+Open the `sudoers` file:
+
+`sudo visudo -f /etc/sudoers`
+
+
+Add these lines to allow `hacker` user group to run `openvpn` on their own:
+
+```
+# Allow openvpn for users in hacker group
+%hacker ALL=NOPASSWD: /usr/sbin/openvpn
+```
